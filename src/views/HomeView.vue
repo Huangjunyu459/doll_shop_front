@@ -5,11 +5,12 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div class="max-w-xl -mt-10">
           <div class="flex items-center mb-3">
-            <Sparkles class="w-5 h-5 text-[#E5A03E] mr-2" />
-            <span class="text-[#B24A42] text-xl font-bold tracking-wider drop-shadow-sm">趣致中古玩具店</span>
+            <Sparkles class="w-5 h-5 text-[#F6BC60] mr-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" />
+            <span class="hero-brand text-[1.7rem] md:text-[2.2rem] font-black">趣致中古玩具店</span>
+            <Sparkles class="w-5 h-5 text-[#F6BC60] ml-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]" />
           </div>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-[#3A2A20] mb-4 tracking-tight drop-shadow-sm">治愈系周边精选</h1>
-          <p class="text-[#5C4D43] mb-6 leading-relaxed font-medium drop-shadow-sm text-sm md:text-base">
+          <h1 class="hero-title text-[3.45rem] md:text-[4.6rem] font-black mb-4 leading-[1.05]">治愈系周边精选</h1>
+          <p class="hero-tagline mb-6 leading-relaxed font-bold text-sm md:text-base">
             精心挑选各类可爱玩偶、挂件和指偶，来自迪士尼、三丽鸥等热门IP，让每一个小可爱陪伴你的日常。
           </p>
           <button class="inline-flex items-center px-7 py-3 rounded-full bg-[#B24A42] text-white font-bold hover:bg-[#9E4038] transition-all shadow-md hover:-translate-y-1 hover:shadow-lg">
@@ -30,6 +31,7 @@
             <div
               v-for="(zone, index) in infiniteZones"
               :key="index"
+              @click="handleZoneClick(zone.path)"
               class="relative bg-[#FBF4E5] p-2 rounded-[2.5rem] border border-[#FDEEE8] shadow-lg hover:shadow-2xl transition-all group aspect-[1.1/1] cursor-pointer shrink-0 w-[calc((100%-4rem)/3)]"
             >
               <div class="w-full h-full rounded-[2rem] overflow-hidden relative flex items-center justify-center bg-white/30">
@@ -47,7 +49,6 @@
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 mb-10 relative z-10">
       <div class="bg-[#FCE4C6] border-2 border-[#EEDBC0] border-dashed rounded-[2rem] p-6 px-8 shadow-sm">
-
         <div class="flex justify-between items-end mb-6">
           <div class="flex items-center">
             <Tag class="w-7 h-7 text-[#B24A42] mr-2 -rotate-12" fill="currentColor" />
@@ -95,7 +96,6 @@
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative z-10">
       <div class="bg-[#FCE4C6] border-2 border-[#EEDBC0] border-dashed rounded-[2rem] p-6 px-8 shadow-sm">
-
         <div class="flex justify-between items-end mb-6">
           <div class="flex items-center">
             <h2 class="text-2xl font-extrabold text-[#3A2A20] flex items-center tracking-wide">
@@ -187,12 +187,10 @@
     </footer>
 
     <div class="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-5">
-
       <div class="relative group">
         <div class="w-12 h-12 bg-[#FDFCF8]/90 backdrop-blur-md rounded-full shadow-lg border border-rose-100 flex items-center justify-center text-[#B24A42] cursor-pointer hover:bg-rose-50 transition-all hover:scale-110 z-10 relative">
           <BookHeart class="w-6 h-6" />
         </div>
-
         <div class="absolute right-full top-1/2 -translate-y-1/2 pr-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-right scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto">
           <div class="w-72 h-72 bg-[#FDFCF8]/95 backdrop-blur-xl border border-rose-100 p-6 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-4 relative">
             <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#FDFCF8] border-r border-t border-rose-100 rotate-45"></div>
@@ -215,7 +213,6 @@
         <div class="w-12 h-12 bg-[#FDFCF8]/90 backdrop-blur-md rounded-full shadow-lg border border-emerald-100 flex items-center justify-center text-[#74A37C] cursor-pointer hover:bg-emerald-50 transition-all hover:scale-110 z-10 relative">
           <MessageCircle class="w-6 h-6" />
         </div>
-
         <div class="absolute right-full top-1/2 -translate-y-1/2 pr-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-right scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto">
           <div class="w-72 h-72 bg-[#FDFCF8]/95 backdrop-blur-xl border border-emerald-100 p-6 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-4 relative">
             <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#FDFCF8] border-r border-t border-emerald-100 rotate-45"></div>
@@ -235,12 +232,13 @@
       </div>
 
     </div>
-
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
+// ⭐ 引入 Vue Router 的 useRouter 方法 ⭐
+import { useRouter } from 'vue-router'
 import { Sparkles, ArrowRight, Heart, Store, Tent, MessageCircle, ChevronLeft, ChevronRight, BookHeart, Copy, Check, Tag } from 'lucide-vue-next'
 
 import heroBg from '../assets/hero_bg.jpg'
@@ -253,6 +251,9 @@ import zawuImg from '../assets/zone_zawu.png'
 import defaultImg from '../assets/default_product.png'
 import wechatQrCode from '../assets/wechat_qr.png'
 import xhsQrCode from '../assets/xhs_qr.png'
+
+// ⭐ 初始化 router ⭐
+const router = useRouter()
 
 const specialItems = [
   { title: '复古红裙熊玩偶', tags: ['中古玩偶', '复古'], discount: '7折', price: '69.00', originalPrice: '98.00' },
@@ -268,17 +269,30 @@ const latestItems = [
   { title: '复古铁盒收纳盒', tags: ['杂物', '收藏'], price: '128.00' }
 ]
 
+// ⭐ 给需要跳转的专区配置路由路径 path ⭐
 const baseZones = [
-  { name: '指偶专区', img: zhiouImg },
-  { name: '毛绒专区', img: maorongImg },
-  { name: '挂饰专区', img: guashiImg },
-  { name: '摆件专区', img: baijianImg },
-  { name: '明信片专区', img: mingxinpianImg },
-  { name: '杂物专区', img: zawuImg }
+  { name: '指偶专区', img: zhiouImg, path: '/zone/zhiou' }, // 配置了跳转路径
+  { name: '毛绒专区', img: maorongImg, path: '' },
+  { name: '挂饰专区', img: guashiImg, path: '' },
+  { name: '摆件专区', img: baijianImg, path: '' },
+  { name: '明信片专区', img: mingxinpianImg, path: '' },
+  { name: '杂物专区', img: zawuImg, path: '' }
 ]
 
 const infiniteZones = [...baseZones, ...baseZones, ...baseZones]
 const sliderRef = ref(null)
+
+// ⭐ 点击专区的跳转逻辑 ⭐
+const handleZoneClick = (path) => {
+  if (path) {
+    // 页面跳转后滚动回顶部
+    window.scrollTo(0, 0)
+    router.push(path)
+  } else {
+    // 如果没有配置路径，弹出可爱提示
+    alert('该专区正在精心筹备中，敬请期待哦！')
+  }
+}
 
 const getScrollStep = () => {
   const slider = sliderRef.value
@@ -332,6 +346,43 @@ const copyToClipboard = async (text, type) => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+
+.hero-brand {
+  font-family: 'ZCOOL KuaiLe', 'YouYuan', '幼圆', 'STHupo', cursive;
+  color: #a7442f;
+  text-shadow:
+    -1.5px -1.5px 0 #ffd8a8,
+    1.5px -1.5px 0 #ffd8a8,
+    -1.5px 1.5px 0 #ffd8a8,
+    1.5px 1.5px 0 #ffd8a8,
+    0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.hero-title {
+  font-family: 'ZCOOL KuaiLe', 'YouYuan', '幼圆', 'STHupo', cursive;
+  color: #2f6a47;
+  letter-spacing: 0.08em;
+  text-shadow:
+    -2px -2px 0 #ffd8a8,
+    2px -2px 0 #ffd8a8,
+    -2px 2px 0 #ffd8a8,
+    2px 2px 0 #ffd8a8,
+    0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.hero-tagline {
+  display: inline-block;
+  color: #6b3f24;
+  background: rgba(246, 218, 169, 0.92);
+  border: 1px solid #efc886;
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
 .line-clamp-1 {
   display: -webkit-box;
   -webkit-line-clamp: 1;

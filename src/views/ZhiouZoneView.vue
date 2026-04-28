@@ -68,7 +68,7 @@
             按人气 <ChevronDown class="w-4 h-4 ml-1 opacity-60" />
           </button>
         </div>
-        <div class="text-[#8C7A6B] text-sm font-medium">共 12 件商品</div>
+        <div class="text-[#8C7A6B] text-sm font-medium">共 {{ products.length }} 件商品</div>
       </div>
     </section>
 
@@ -138,7 +138,13 @@
                   每一只指偶都独一无二，<br/>先到先得，遇见即是缘分！
                 </p>
               </div>
-              <img :src="robotImg" class="absolute -right-2 -bottom-1 w-20 pointer-events-none" style="mix-blend-mode: multiply;" alt="装饰图" @error="handleImgError" />
+              <img
+                :src="robotImg"
+                class="absolute -right-2 -bottom-1 w-20 pointer-events-none object-contain transition-opacity duration-300"
+                style="mix-blend-mode: multiply; filter: contrast(110%) brightness(105%);"
+                alt="机器人装饰"
+                @error="handleImgError"
+              />
             </div>
           </div>
         </div>
@@ -193,7 +199,13 @@
           </div>
         </div>
 
-        <img :src="rabbitImg" class="absolute right-10 bottom-0 w-[120px] z-20 pointer-events-none" style="mix-blend-mode: multiply;" alt="装饰图" @error="handleImgError" />
+        <img
+          :src="rabbitImg"
+          class="absolute right-10 bottom-0 w-[120px] z-20 pointer-events-none object-contain"
+          style="mix-blend-mode: multiply; filter: brightness(1.1) contrast(1.15);"
+          alt="兔子装饰"
+          @error="handleImgError"
+        />
       </div>
     </section>
 

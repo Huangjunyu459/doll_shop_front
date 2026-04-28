@@ -18,36 +18,52 @@
           </div>
         </div>
 
-        <div class="flex-1">
-          <h1 class="text-4xl font-extrabold text-[#3A2A20] mb-4 flex items-center tracking-wide font-brand">
-            指偶专区 <Sparkles class="w-6 h-6 text-[#E5A03E] ml-3 drop-shadow-sm" />
-          </h1>
-          <h3 class="text-xl text-[#B24A42] font-bold mb-4 tracking-wider">来自世界的可爱指偶，陪伴你的小小剧场。</h3>
-          <p class="text-[#5C4D43] leading-relaxed mb-6 font-medium max-w-2xl text-sm">
-            精心挑选的海外中古指偶，每一只都有独特的表情与故事。<br/>
-            无论是动物、角色还是童话系列，都是时光里温暖的小可爱。
-          </p>
-
-          <div class="inline-block bg-[#FDF6EA] border border-[#F2DEB4] rounded-2xl p-4 pr-10 mb-8 shadow-sm">
-            <div class="flex items-center text-[#D3875E] font-extrabold mb-1.5">
-              <Star class="w-5 h-5 mr-1.5" fill="currentColor" />
-              本店不使用购物车与支付模块
+        <div class="flex-1 flex items-center justify-between gap-8">
+          <div class="flex-1">
+            <h1 class="text-4xl font-extrabold text-[#3A2A20] mb-4 flex items-center tracking-wide font-brand">
+              指偶专区 <Sparkles class="w-6 h-6 text-[#E5A03E] ml-3 drop-shadow-sm" />
+            </h1>
+            <h3 class="text-xl text-[#B24A42] font-bold mb-4 tracking-wider">来自世界的可爱指偶，陪伴你的小小剧场。</h3>
+            <div class="space-y-1 mb-6">
+              <p class="text-[#5C4D43] leading-relaxed font-medium max-w-2xl text-sm">
+                精心挑选的海外中古指偶，每一只都有独特的表情与故事。
+              </p>
+              <p class="text-[#5C4D43] leading-relaxed font-medium max-w-2xl text-sm">
+                无论是动物、角色还是童话系列，都是时光里温暖的小可爱。
+              </p>
             </div>
-            <p class="text-xs text-[#8C7A6B] font-medium leading-relaxed">
-              本店所有商品均为私域交易，不支持在线下单与付款。<br/>
-              看中商品后请联系店主，我们会私信沟通确认后为您预留。
-            </p>
+
+            <div class="inline-block bg-[#FDF6EA] border border-[#F2DEB4] rounded-2xl p-4 pr-10 mb-8 shadow-sm">
+              <div class="flex items-center text-[#D3875E] font-extrabold mb-1.5">
+                <Star class="w-5 h-5 mr-1.5" fill="currentColor" />
+                本店不使用购物车与支付模块
+              </div>
+              <p class="text-xs text-[#8C7A6B] font-medium leading-relaxed">
+                本店所有商品均为私域交易，不支持在线下单与付款。<br/>
+                看中商品后请联系店主，我们会私信沟通确认后为您预留。
+              </p>
+            </div>
+
+            <div class="flex items-center gap-4 flex-wrap">
+              <button class="flex items-center px-6 py-2.5 rounded-full bg-[#B24A42] text-white font-bold hover:bg-[#9E4038] transition-all shadow-md hover:shadow-lg">
+                <MessageCircle class="w-4 h-4 mr-2" />
+                联系店主咨询
+              </button>
+              <button class="flex items-center px-6 py-2.5 rounded-full border-2 border-[#D3875E]/30 text-[#8C4639] font-bold hover:bg-[#FDF6EA] transition-all">
+                <FileSearch class="w-4 h-4 mr-2" />
+                查看联系方式
+              </button>
+            </div>
           </div>
 
-          <div class="flex items-center gap-4 flex-wrap">
-            <button class="flex items-center px-6 py-2.5 rounded-full bg-[#B24A42] text-white font-bold hover:bg-[#9E4038] transition-all shadow-md hover:shadow-lg">
-              <MessageCircle class="w-4 h-4 mr-2" />
-              联系店主咨询
-            </button>
-            <button class="flex items-center px-6 py-2.5 rounded-full border-2 border-[#D3875E]/30 text-[#8C4639] font-bold hover:bg-[#FDF6EA] transition-all">
-              <FileSearch class="w-4 h-4 mr-2" />
-              查看联系方式
-            </button>
+          <div class="w-[350px] flex-shrink-0">
+            <img
+              :src="bearHeroImg"
+              class="w-full h-auto object-contain pointer-events-none"
+              style="mix-blend-mode: multiply; filter: brightness(1.1) contrast(1.1);"
+              alt="熊店长"
+              @error="handleImgError"
+            />
           </div>
         </div>
       </div>
@@ -138,13 +154,7 @@
                   每一只指偶都独一无二，<br/>先到先得，遇见即是缘分！
                 </p>
               </div>
-              <img
-                :src="robotImg"
-                class="absolute -right-2 -bottom-1 w-20 pointer-events-none object-contain transition-opacity duration-300"
-                style="mix-blend-mode: multiply; filter: contrast(110%) brightness(105%);"
-                alt="机器人装饰"
-                @error="handleImgError"
-              />
+              <img :src="robotImg" class="absolute -right-2 -bottom-1 w-20 pointer-events-none object-contain" style="mix-blend-mode: multiply; filter: contrast(110%) brightness(105%);" alt="机器人装饰" @error="handleImgError" />
             </div>
           </div>
         </div>
@@ -199,13 +209,7 @@
           </div>
         </div>
 
-        <img
-          :src="rabbitImg"
-          class="absolute right-10 bottom-0 w-[120px] z-20 pointer-events-none object-contain"
-          style="mix-blend-mode: multiply; filter: brightness(1.1) contrast(1.15);"
-          alt="兔子装饰"
-          @error="handleImgError"
-        />
+        <img :src="rabbitImg" class="absolute right-10 bottom-0 w-[120px] z-20 pointer-events-none object-contain" style="mix-blend-mode: multiply; filter: brightness(1.1) contrast(1.15);" alt="兔子装饰" @error="handleImgError" />
       </div>
     </section>
 
@@ -223,12 +227,10 @@
     </footer>
 
     <div class="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-5">
-
       <div class="relative group">
         <div class="w-12 h-12 bg-[#FDFCF8]/90 backdrop-blur-md rounded-full shadow-lg border border-rose-100 flex items-center justify-center text-[#B24A42] cursor-pointer hover:bg-rose-50 transition-all hover:scale-110 z-10 relative">
           <BookHeart class="w-6 h-6" />
         </div>
-
         <div class="absolute right-full top-1/2 -translate-y-1/2 pr-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-right scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto">
           <div class="w-72 h-72 bg-[#FDFCF8]/95 backdrop-blur-xl border border-rose-100 p-6 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-4 relative">
             <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#FDFCF8] border-r border-t border-rose-100 rotate-45"></div>
@@ -251,7 +253,6 @@
         <div class="w-12 h-12 bg-[#FDFCF8]/90 backdrop-blur-md rounded-full shadow-lg border border-emerald-100 flex items-center justify-center text-[#74A37C] cursor-pointer hover:bg-emerald-50 transition-all hover:scale-110 z-10 relative">
           <MessageCircle class="w-6 h-6" />
         </div>
-
         <div class="absolute right-full top-1/2 -translate-y-1/2 pr-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 origin-right scale-95 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto">
           <div class="w-72 h-72 bg-[#FDFCF8]/95 backdrop-blur-xl border border-emerald-100 p-6 rounded-3xl shadow-2xl flex flex-col items-center justify-center gap-4 relative">
             <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#FDFCF8] border-r border-t border-emerald-100 rotate-45"></div>
@@ -284,7 +285,9 @@ import {
   Heart, Eye, ClipboardList, Globe, BookHeart, Copy, Check
 } from 'lucide-vue-next'
 
+// 图片资源引入
 import heroZhiouImg from '../assets/hero_zhiou.jpg'
+import bearHeroImg from '../assets/bear_hero.png'
 import robotImg from '../assets/robot_deco.png'
 import rabbitImg from '../assets/rabbit_deco.png'
 import defaultImg from '../assets/default_product.png'
